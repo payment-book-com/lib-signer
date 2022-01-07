@@ -39,8 +39,9 @@ class Signer
 
         $flattenRequest = [];
         foreach (Arr::dot($request) as $key => $value) {
-            $flattenRequest[] = $key . ':' . $value;
+            $flattenRequest[] = $key . ':' . is_array($value) && empty($value) ? '' : $value;
         }
+        asort($flattenRequest);
 
         return $flattenRequest;
     }
