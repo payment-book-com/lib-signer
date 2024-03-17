@@ -30,6 +30,16 @@ class Signer
 
     /**
      * @param array $request
+     * @param string $secretKey
+     * @return bool
+     */
+    public static function validate(array $request, string $secretKey): bool
+    {
+        return hash_equals(self::sign($request, $secretKey), $request['general']['signature']);
+    }
+
+    /**
+     * @param array $request
      *
      * @return array
      */
