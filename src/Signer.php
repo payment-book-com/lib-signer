@@ -10,8 +10,9 @@ use Illuminate\Support\Arr;
  */
 class Signer
 {
-    const ALGORITHM = 'sha512';
-    const ITEMS_DELIMITER = ';';
+    private const
+        ALGORITHM = 'sha512',
+        ITEMS_DELIMITER = ';';
 
     /**
      * @param array $request
@@ -49,7 +50,7 @@ class Signer
 
         $flattenRequest = [];
         foreach (Arr::dot($request) as $key => $value) {
-            $flattenRequest[] = $key . ':' . is_array($value) && empty($value) ? '' : $value;
+            $flattenRequest[] = $key . ':' . (is_array($value) ? json_encode($value) : $value);
         }
         asort($flattenRequest);
 
