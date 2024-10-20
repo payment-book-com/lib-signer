@@ -1,7 +1,7 @@
 {
     "type": "project",
     "name": "payment_book2/signer",
-    "description": "Payment Book v2 - Gateway Signer",
+    "description": "PAYMENT BOOK - Gateway Signer",
     "homepage": "https://payment-book.com",
     "license": "proprietary",
     "authors": [
@@ -20,7 +20,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "PaymentBook\\Signer\\": "src/"
+            "PB\\Signer\\": "src/"
         }
     },
     "require": {
