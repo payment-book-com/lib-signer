@@ -1,59 +1,41 @@
 <?php
 
-namespace PaymentBook\Signer;
+namespace PB\Signer;
 
-use Illuminate\Support\Arr;
-
-/**
- * Class Signer
- * @package PaymentBook\Signer
- */
-class Signer
+final class Signer
 {
-    private const
-        ALGORITHM = 'sha512',
-        ITEMS_DELIMITER = ';';
+    private const ALGORITHM = 'sha512';
 
-    /**
-     * @param array $request
-     * @param string $secretKey
-     * @param bool $notHash
-     *
-     * @return string
-     */
-    public static function sign(array $request, string $secretKey, bool $notHash = false): string
+    public static function sign(array $data, string $key): array
     {
-        $stringToSign = implode(self::ITEMS_DELIMITER, self::getFlattenRequest($request));
+        $data['general']['signature'] = self::hash($data, $key);
 
-        return $notHash
-            ? $stringToSign : base64_encode(hash_hmac(self::ALGORITHM, $stringToSign, $secretKey, true));
+        return $data;
+    }
+
+    private static function hash(array $data, string $key): string
+    {
+        unset($data['general']['signature']);
+        self::rksort($data);
+
+        return hash_hmac(self::ALGORITHM, serialize($data), $key);
+    }
+
+    public static function validate(array $data, string $key): bool
+    {
+        return isset($data['general']['signature']) && hash_equals(self::hash($data, $key), $data['general']['signature']);
     }
 
     /**
-     * @param array $request
-     * @param string $secretKey
-     * @return bool
+     * Recursively sort array by keys in lexicographical order.
      */
-    public static function validate(array $request, string $secretKey): bool
+    private static function rksort(array &$array): void
     {
-        return hash_equals(self::sign($request, $secretKey), $request['general']['signature']);
-    }
-
-    /**
-     * @param array $request
-     *
-     * @return array
-     */
-    private static function getFlattenRequest(array $request): array
-    {
-        unset($request['general']['signature']);
-
-        $flattenRequest = [];
-        foreach (Arr::dot($request) as $key => $value) {
-            $flattenRequest[] = $key . ':' . (is_array($value) ? json_encode($value) : $value);
+        foreach ($array as &$value) {
+            if (is_array($value)) {
+                self::rksort($value);
+            }
         }
-        asort($flattenRequest);
-
-        return $flattenRequest;
+        ksort($array, SORT_STRING);
     }
 }
