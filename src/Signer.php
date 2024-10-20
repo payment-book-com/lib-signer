@@ -1,6 +1,6 @@
 <?php
 
-namespace PB\Signer;
+namespace PB;
 
 final class Signer
 {

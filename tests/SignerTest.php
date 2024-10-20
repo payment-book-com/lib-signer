@@ -1,6 +1,6 @@
 <?php
 
-use PaymentBook\Signer\Signer;
+use PB\Signer;
 
 /**
  * Class SignerTest
