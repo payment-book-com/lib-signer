@@ -1,6 +1,6 @@
 {
     "type": "project",
-    "name": "payment_book2/signer",
+    "name": "payment_book/signer",
     "description": "PAYMENT BOOK - Gateway Signer",
     "homepage": "https://payment-book.com",
     "license": "proprietary",

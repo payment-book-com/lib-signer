@@ -2,7 +2,7 @@
 
 Basic usage:
 ```
-use BB\Signer;
+use PB\Signer;
 
 $request = [
     "general" => [
@@ -14,7 +14,14 @@ $request = [
         "price" => "12.32",
         "currency" => "EUR"
     ],
-    "company" => [],
+    "company" => [
+        "name": "",
+        "bank_name": "",
+        "bank_account": "",
+        "bank_swift": "",
+        "vat_number": "",
+        "address": ""
+    ],
     "payer" => [
         "email" => "test@ail.com",
         "name" => "name",
