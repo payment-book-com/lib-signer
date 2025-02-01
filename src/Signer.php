@@ -18,7 +18,9 @@ final class Signer
         unset($data['general']['signature']);
         self::rksort($data);
 
-        return hash_hmac(self::ALGORITHM, serialize($data), $key);
+        $serialized = serialize($data);
+        $serialized = str_replace(["\n", "\r"], '', $serialized);
+        return hash_hmac(self::ALGORITHM, $serialized, $key);
     }
 
     public static function validate(array $data, string $key): bool
