@@ -8,14 +8,14 @@ final class Signer
 
     public static function sign(array $data, string $key): array
     {
-        $data['general']['signature'] = self::hash($data, $key);
+        $data['meta']['signature'] = self::hash($data, $key);
 
         return $data;
     }
 
     private static function hash(array $data, string $key): string
     {
-        unset($data['general']['signature']);
+        unset($data['meta']['signature']);
         self::rksort($data);
 
         return hash_hmac(self::ALGORITHM, serialize($data), $key);
@@ -23,7 +23,7 @@ final class Signer
 
     public static function validate(array $data, string $key): bool
     {
-        return isset($data['general']['signature']) && hash_equals(self::hash($data, $key), $data['general']['signature']);
+        return isset($data['meta']['signature']) && hash_equals(self::hash($data, $key), $data['meta']['signature']);
     }
 
     /**
