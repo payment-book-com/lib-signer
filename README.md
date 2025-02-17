@@ -5,7 +5,7 @@ Basic usage:
 use PB\Signer;
 
 $request = [
-    "general" => [
+    "meta" => [
         "payment_id" => "3322423",
         "service_id" => 1,
         "signature" => "any"
