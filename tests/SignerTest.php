@@ -11,7 +11,7 @@ class SignerTest extends \PHPUnit\Framework\TestCase
         CASES_TEST_SIGN_STRING = [
             [
                 'request' => [
-                    'general' => [
+                    'meta' => [
                         'payment_id' => 'someId',
                         'service_id' => 1231,
                         'signature' => 'some_generated_signature'
@@ -33,13 +33,13 @@ class SignerTest extends \PHPUnit\Framework\TestCase
                         'mail' => 'somemail@box.box'
                     ]
                 ],
-                'sign_string' => 'general.payment_id:someId;general.service_id:1231;payment.amount:10000;payment.currency:EUR;payment.description:some coool description;card.bin:12312312312312;card.cardholder:cardholder;card.cvv:cvv;issuer.name:name;issuer.surname:surname;issuer.phone:23214321312;issuer.mail:somemail@box.box',
+                'sign_string' => 'meta.payment_id:someId;meta.service_id:1231;payment.amount:10000;payment.currency:EUR;payment.description:some coool description;card.bin:12312312312312;card.cardholder:cardholder;card.cvv:cvv;issuer.name:name;issuer.surname:surname;issuer.phone:23214321312;issuer.mail:somemail@box.box',
             ],
         ],
         CASES_TEST_SIGN = [
             [
                 'request' => [
-                    'general' => [
+                    'meta' => [
                         'payment_id' => 'someId',
                         'service_id' => 1231,
                         'signature' => 'some_generated_signature'
@@ -66,7 +66,7 @@ class SignerTest extends \PHPUnit\Framework\TestCase
             ],
             [
                 'request' => [
-                    'general' => [
+                    'meta' => [
                         'payment_id' => 'someId2',
                         'service_id' => 1231,
                         'signature' => 'some_generated_signature2'
