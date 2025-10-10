@@ -1,4 +1,8 @@
-## PAYMENT BOOK - Signer
+## PAYMENT BOOK - SIGNER
+
+##### PHP SDK Request signer and validator mini library
+
+---
 
 Basic usage:
 ```
@@ -47,7 +51,4 @@ $secretKey = 'SERVICE_SECRET_KEY';
 $request = Signer::sign($request, $secretKey);
 ```
 
-
-**Powered by [domonk.com](https://domonk.com/)**
-
-
+**Powered by [payment-book.com](https://payment-book.com/)**
