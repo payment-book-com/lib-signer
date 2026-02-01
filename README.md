@@ -51,4 +51,7 @@ $secretKey = 'SERVICE_SECRET_KEY';
 $request = Signer::sign($request, $secretKey);
 ```
 
+> [!IMPORTANT]
+> **API HTTP Request**: You must include the `X-REQUEST-TOKEN-NAME` header in your request with the name of the API Token used to sign the request.
+
 **Powered by [payment-book.com](https://payment-book.com/)**
