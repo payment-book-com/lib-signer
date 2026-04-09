@@ -34,6 +34,8 @@ final class Signer
         foreach ($array as &$value) {
             if (is_array($value)) {
                 self::rksort($value);
+            } elseif (is_string($value)) {
+                $value = preg_replace('/\s+/', '+', trim($value));
             }
         }
         ksort($array, SORT_STRING);
