@@ -6,7 +6,7 @@ This library ensures secure communication by signing your payloads and preventin
 ## Features
 
 - **Signature Generation**: Automatically sorts and flattens payload data to generate a secure HMAC SHA-256 signature.
-- **Signature Validation**: Securely verifies incoming requests (e.g., from Webhooks) to ensure they originated from Payment Book.
+- **Signature Validation**: Securely verifies incoming requests (e.g., from Webhooks) to ensure they originated from PAYMENT BOOK.
 - **Zero Dependencies**: Lightweight and fast, relying only on native PHP functions.
 
 ## Basic Usage
@@ -18,12 +18,12 @@ use PB\Signer;
 
 $payload = [
     "meta" => [
-        "payment_id" => "3322423",
+        "reference_id" => "3322423",
         "service_id" => 1,
     ],
     "payment" => [
-        "price" => "12.32",
-        "currency" => "EUR"
+        "amount" => "12.32",
+        "currency" => "EUR",
     ],
     "company" => [
         "name" => "Acme Corp",
@@ -31,27 +31,27 @@ $payload = [
         "bank_account" => "LV33HABA0000000000000",
         "bank_swift" => "HABAXXXX",
         "vat_number" => "LV40000000000",
-        "address" => "123 Business Rd."
+        "address" => "123 Business Rd.",
     ],
-    "payer" => [
+    "user" => [
         "email" => "test@example.com",
-        "name" => "John",
-        "surname" => "Doe",
+        "first_name" => "John",
+        "last_name" => "Doe",
         "phone" => "+37123446666",
-        "address" => "Some address 255"
+        "address" => "Some address 255",
     ],
     "order" => [
         [
             "currency" => "EUR",
             "price" => "5.32",
-            "textual" => "Order item 1 description"
+            "textual" => "Order item 1 description",
         ],
         [
             "currency" => "EUR",
             "price" => "7.00",
-            "textual" => "Order item 2 description"
-        ]
-    ]
+            "textual" => "Order item 2 description",
+        ],
+    ],
 ];
 
 $secretKey = 'YOUR_SERVICE_SECRET_KEY';
