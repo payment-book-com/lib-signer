@@ -1,6 +1,6 @@
-# PAYMENT BOOK PHP SDK - Request Signer & Validator
+# PHP SDK - Request Signer & Validator
 
-A lightweight PHP library for generating and validating cryptographic signatures for API requests to the PAYMENT BOOK GATE DIRECT API.
+A lightweight PHP library for generating and validating cryptographic signatures for API requests to the GATE DIRECT API.
 This library ensures secure communication by signing your payloads and preventing data tampering.
 
 ## Features
