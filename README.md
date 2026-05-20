@@ -9,6 +9,28 @@ This library ensures secure communication by signing your payloads and preventin
 - **Signature Validation**: Securely verifies incoming requests (e.g., from Webhooks) to ensure they originated from PAYMENT BOOK.
 - **Zero Dependencies**: Lightweight and fast, relying only on native PHP functions.
 
+## Installation
+
+### 1. Register local / Git Repository in `composer.json`
+
+Add the library to the `repositories` array in your project's `composer.json`:
+
+```json
+"repositories": [
+    {
+        "type": "git",
+        "url": "git@github.com:payment-book-com/lib-signer.git"
+    }
+]
+```
+
+### 2. Require the package
+
+Run:
+```bash
+composer require payment_book/signer:^0.0
+```
+
 ## Basic Usage
 
 ### Signing a Request Payload
