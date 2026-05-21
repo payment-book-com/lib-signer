@@ -11,9 +11,8 @@ This library ensures secure communication by signing your payloads and preventin
 
 ## Installation
 
-### 1. Register local / Git Repository in `composer.json`
-
-Add the library to the `repositories` array in your project's `composer.json`:
+1. Register repository in composer.json
+Add the library to the repositories array in your project's `composer.json`:
 
 ```json
 "repositories": [
@@ -24,14 +23,13 @@ Add the library to the `repositories` array in your project's `composer.json`:
 ]
 ```
 
-### 2. Require the package
+2. Require package
 
-Run:
 ```bash
 composer require payment_book/signer:^0.0
 ```
 
-## Basic Usage
+## Usage
 
 ### Signing a Request Payload
 
