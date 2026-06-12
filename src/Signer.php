@@ -44,8 +44,10 @@ final class Signer
     /**
      * Custom serialization matching PHP native serialize for basic types.
      * This allows developers in other languages to easily port the algorithm.
+     * 
+     * @param mixed $data
      */
-    public static function serialize(mixed $data): string
+    public static function serialize($data): string
     {
         if (is_array($data)) {
             $result = 'a:' . count($data) . ':{';
