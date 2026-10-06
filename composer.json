@@ -1,5 +1,5 @@
 {
-    "type": "project",
+    "type": "library",
     "name": "payment_book/signer",
     "description": "PAYMENT BOOK - Gateway Signer",
     "homepage": "https://payment-book.com",
